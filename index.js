@@ -50,7 +50,8 @@ images.forEach((img, ind) => {
   printlist.append(title);
 });
 items.append(printlist);
-
+document.getElementsByClassName("C" + count)[0].style.backgroundColor =
+  "yellow";
 var changeImage = () => {
   let obj = document.getElementsByClassName("img")[0];
 
