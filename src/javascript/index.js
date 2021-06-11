@@ -14,11 +14,16 @@ const setClassColor = (className, newColor) => {
   element.style.backgroundColor = newColor;
 };
 
+const setTextColor = (className, newColor) => {
+  let element = document.getElementsByClassName(className)[0];
+  element.style.color = newColor;
+  console.log(element.style);
+};
 // change value of count
 const changeCount = (className, value) => {
   setClassColor(className + count, "");
   count = count + value;
-  setClassColor(className + count, "yellow");
+  setClassColor(className + count, "blue");
 };
 
 // function to change the Image and its text in display section on right hand side
@@ -35,16 +40,21 @@ var changeImage = () => {
 // event listener to handle arrow keys
 window.document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp" && count > 0) {
+    setTextColor("C" + count, "black");
     changeCount("C", -1);
+    setTextColor("C" + count, "white");
     changeImage();
   } else if (e.key === "ArrowDown" && count < images.length - 1) {
+    setTextColor("C" + count, "black");
     changeCount("C", 1);
+    setTextColor("C" + count, "white");
     changeImage();
   }
 });
 
 createList();
-setClassColor("C" + count, "yellow");
+setClassColor("C" + count, "blue");
+setTextColor("C" + count, "white");
 //evenet listener to change image on mouse click
 var listOfImages = document.getElementsByClassName("LIST")[0];
 
@@ -53,8 +63,10 @@ listOfImages.addEventListener("click", (e) => {
   if (e.target != null) {
     let char = parseInt(e.target.getAttribute("class").charAt(1), 10);
     setClassColor("C" + count, "");
+    setTextColor("C" + count, "black");
     count = 0;
     changeCount("C", char);
+    setTextColor("C" + count, "white");
     changeImage();
   }
 });
