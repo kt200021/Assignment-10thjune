@@ -22,6 +22,7 @@
   width: 37%;
   display: inline-block;
   float: left;
+  
 }
 ul {
   padding: 0px;
@@ -30,6 +31,7 @@ ul {
   width: 50%;
   height: 80vh;
   display: inline-block;
+   padding-left: 10px;
 }
 li {
   text-align: left;
