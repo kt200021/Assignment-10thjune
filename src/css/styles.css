@@ -57,7 +57,7 @@ li img {
 li p {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+ 
 }
 .para {
   text-align: center;
