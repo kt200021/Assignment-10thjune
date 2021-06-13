@@ -37,6 +37,33 @@ var changeImage = () => {
   newTitle.innerHTML = title;
 };
 
+const truncateText = () => {
+  let listNode = document.querySelectorAll(".LIST p");
+  listNode.forEach((item, index) => {
+    const imageTitle = images[index].title;
+
+    item.innerHTML = imageTitle;
+
+    
+    const scrollWidth = item.scrollWidth;
+    const len = item.innerHTML.length;
+    const clientWidth = item.clientWidth;
+    
+    let newLength = len * (clientWidth / scrollWidth);
+    Math.round(newLength);
+
+    let dist = (newLength - 3) / 2;
+    if (item.clientWidth < item.scrollWidth) {
+      console.log("yes");
+      let left = imageTitle.slice(0, dist - 1);
+      let right = imageTitle.slice(len - dist, len);
+      item.innerHTML = left + "..." + right;
+    } else if (item.clientWidth > item.scrollWidth) {
+      item.innerHTML = images[index].title;
+    }
+  });
+};
+
 // event listener to handle arrow keys
 window.document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp" && count > 0) {
@@ -53,8 +80,12 @@ window.document.addEventListener("keydown", (e) => {
 });
 
 createList();
+truncateText();
+window.addEventListener("resize", truncateText);
+
 setClassColor("C" + count, "blue");
 setTextColor("C" + count, "white");
+
 //evenet listener to change image on mouse click
 var listOfImages = document.getElementsByClassName("LIST")[0];
 
